@@ -1,0 +1,18 @@
+/* Khung nhân vật: kích thước CỐ ĐỊNH theo máy (JS đặt --ph), không đổi theo câu hỏi. Thẻ câu hỏi tự co (data-f) cho vừa. */
+.pet{position:relative;overflow:hidden;padding:0;flex:none;height:var(--ph,200px);--hud:66px}
+#game>.pet{flex:none}
+.pet #face{position:absolute;top:10px;left:0;right:0;margin:0 auto;width:var(--fs,120px);height:var(--fs,120px);max-height:none;min-height:0;aspect-ratio:auto;max-width:100%;flex:none}
+.hud{position:absolute;left:8px;right:8px;bottom:8px;z-index:2;background:var(--card-a);border-radius:14px;padding:6px 10px 8px;box-shadow:0 2px 8px rgba(0,0,0,.1);text-align:left}
+.hud .hr{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+.hud #name{font-size:14px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.hud #pts{font-size:12px;font-weight:700;white-space:nowrap;flex:none}
+.hud .bar{position:relative;height:18px;margin:0;width:100%}
+.hud #next{position:absolute;left:0;right:0;top:0;line-height:18px;font-size:11px;font-weight:700;text-align:center;color:var(--ink);text-shadow:0 0 3px var(--card),0 0 3px var(--card);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px}
+.pet .sn{z-index:3}
+.qc{justify-content:flex-start}
+.qc[data-f="1"] .q{font-size:26px;margin:6px 0 8px}.qc[data-f="1"] .q.w{font-size:18px}.qc[data-f="1"] .qi svg{height:72px}.qc[data-f="1"] .opt{min-height:56px;font-size:23px}
+.qc[data-f="2"] .q{font-size:22px;margin:4px 0 6px}.qc[data-f="2"] .q.w{font-size:16px}.qc[data-f="2"] .qi svg{height:56px}.qc[data-f="2"] .opt{min-height:50px;font-size:21px}.qc[data-f="2"] #msg{min-height:22px;margin:4px 0}
+.qc[data-f="3"]{padding:10px}.qc[data-f="3"] .q{font-size:19px;margin:3px 0 5px}.qc[data-f="3"] .q.w{font-size:14.5px}.qc[data-f="3"] .qi svg{height:44px}.qc[data-f="3"] .opt{min-height:44px;font-size:19px}.qc[data-f="3"] #msg{min-height:18px;font-size:13px;margin:3px 0}.qc[data-f="3"] #nx{min-height:40px}
+.qc[data-f="4"]{padding:8px}.qc[data-f="4"] .q{font-size:17px;margin:2px 0 4px}.qc[data-f="4"] .q.w{font-size:13.5px}.qc[data-f="4"] .qi svg{height:36px}.qc[data-f="4"] .opt{min-height:40px;font-size:17px}.qc[data-f="4"] .opts{gap:6px}.qc[data-f="4"] #msg{min-height:16px;font-size:12px;margin:2px 0}.qc[data-f="4"] #nx{min-height:36px}.qc[data-f="4"] #lvl{min-height:20px}
+.qc[data-f="5"] #lvl{display:none}.qc[data-f="5"] .qi svg{height:30px}.qc[data-f="5"] .q{font-size:15px}.qc[data-f="5"] .q.w{font-size:12.5px}.qc[data-f="5"] .opt{min-height:36px;font-size:16px}
+.qc[data-f="6"]{overflow-y:auto}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bé Học Toán</title>
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Bé Học Toán">
+<meta name="theme-color" content="#fff6e0"><meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="data:image/png;base64,{{ICON}}">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<script>try{if(navigator.standalone||matchMedia("(display-mode: standalone)").matches)document.documentElement.className+=" sa"}catch(e){}</script>
+<style>{{CSS}}</style></head><body><main>
+<h1>Bé Học Toán</h1>
+<div id="home" class="scr"><div class="card"><b>Ai đang chơi nào?</b><div id="bk" class="hb warn hide" style="cursor:pointer;text-align:left" onclick="askPin(function(){show('data')})"></div><div id="kids" class="scroll" style="margin:10px 0"></div>
+<button class="btn btn-primary btn-block" data-ic="plus" onclick="show('setup')">Thêm bé mới</button>
+<button class="btn btn-ghost btn-block" style="margin-top:6px" data-ic="upload" onclick="askPin(function(){show('data')})">Sao lưu / chuyển dữ liệu</button></div></div>
+<div id="data" class="scr hide"><div class="card" style="text-align:left"><b style="text-align:center;display:block;margin-bottom:6px">Sao lưu &amp; chuyển dữ liệu</b>
+<div class="scroll">
+<div class="sec">Cài đặt</div>
+<div class="row" style="margin:6px 0"><button class="btn" id="bpin" onclick="setPin()"></button><button class="btn" id="bsnd" onclick="toggle('mute')"></button></div>
+<div class="row" style="margin:6px 0"><button class="btn" id="bread" onclick="toggle('auto')"></button><button class="btn btn-ghost" id="boff" onclick="pinOff()">Tắt mã PIN</button></div>
+<div class="row" style="margin:6px 0"><button class="btn" id="bbgm" onclick="toggle('nobgm')"></button></div>
+<div class="sec">Xuất dữ liệu từ máy này</div><div id="blast" class="mute" style="margin-bottom:4px"></div><div class="mute">Lưu điểm, bộ sưu tập và lịch sử của tất cả các bé để mang sang máy khác.</div>
+<div class="row" style="margin:8px 0"><button class="btn btn-primary" data-ic="download" onclick="expFile()">Lưu file</button><button class="btn" data-ic="copy" onclick="expCopy()">Sao chép</button></div>
+<div class="sec">Nhập dữ liệu vào máy này</div><div class="mute">Dữ liệu đang có trên máy này được giữ nguyên. Bé trùng tên hoặc cùng mã sẽ được gộp, bé mới được thêm vào.</div>
+<button class="btn btn-block" style="margin:8px 0" data-ic="upload" onclick="document.getElementById('impf').click()">Chọn file sao lưu</button>
+<input id="impf" type="file" accept=".json,application/json,text/plain" style="display:none" onchange="impFile(this)">
+<textarea id="dtext" rows="3" placeholder="Hoặc dán dữ liệu vào đây..."></textarea>
+<button class="btn btn-block" onclick="importText(document.getElementById('dtext').value)">Nhập từ khung trên</button>
+<div id="dmsg" class="hb hide" style="margin-top:8px"></div></div>
+<button class="btn btn-primary btn-block" style="margin-top:8px" data-ic="left" onclick="show('home')">Quay lại</button></div></div>
+<div id="setup" class="scr hide"><div class="card"><b>Tên của bé</b><input id="nm" maxlength="20" placeholder="Nhập tên..."><b>Chọn bạn đồng hành</b><div class="grid scroll" id="chars"></div>
+<button class="btn btn-ghost btn-block" data-ic="left" onclick="show('home')">Quay lại</button></div></div>
+<div id="pick" class="scr hide"><div class="card"><b>Chọn bạn mới để nuôi nhé!</b><div class="grid scroll" id="pgrid"></div></div></div>
+<div id="done" class="scr hide"><div class="card"><div class="fit"><div id="dface" class="art"></div></div><div id="dtxt" class="scroll" style="flex:0 1 auto;font-weight:700;font-size:17px;margin:8px 0"></div>
+<button class="btn btn-primary btn-block" style="margin-bottom:8px" data-ic2="right" onclick="show('pick')">Chọn bạn mới</button>
+<button class="btn btn-block" data-ic="img" onclick="openGal('done')">Xem bộ sưu tập</button></div></div>
+<div id="gal" class="scr hide"><div class="card"><b>Bộ sưu tập của <span id="gname"></span></b><div id="gcount" class="mute"></div><div class="grid scroll" id="ggrid"></div>
+<button class="btn btn-primary btn-block" data-ic="left" onclick="gBack()">Quay lại</button></div></div>
+<div id="hist" class="scr hide"><div class="card" style="text-align:left"><b style="text-align:center;display:block">Lịch sử học của <span id="hname"></span></b><div id="hsum"></div><div id="hbody" class="scroll"></div>
+<button class="btn btn-primary btn-block" style="margin-top:8px" data-ic="left" onclick="show(hFrom)">Quay lại</button></div></div>
+<div id="tbl" class="scr hide"><div class="card"><b>Luyện bảng cửu chương</b><div class="mute" style="margin:2px 0 6px">Chọn bảng nhân bé muốn luyện. Phép nào bé thuộc rồi sẽ sáng màu xanh.</div><div class="grid scroll" id="tgrid"></div>
+<button class="btn btn-ghost btn-block" data-ic="left" onclick="show('game')">Quay lại</button></div></div>
+<div id="adv" class="scr hide"><div class="card"><div class="row" style="margin:0 0 6px;align-items:center"><button class="btn btn-sm" id="aprev" aria-label="Thế giới trước"></button><b id="atitle" style="flex:3;text-align:center"></b><button class="btn btn-sm" id="anext" aria-label="Thế giới sau"></button></div>
+<div id="amap" class="amap"></div><div id="ainfo" class="mute" style="margin:6px 0;min-height:36px"></div><button class="btn btn-primary btn-block" data-ic="left" onclick="show('home')">Đổi bé</button></div></div>
+<div id="game" class="scr hide">
+<div class="chips" id="grades"></div>
+<div class="card pet" id="pc"><div id="sky" class="sky"></div><div id="bub" class="bub"><span id="bubt"></span><i id="bubtl" class="btl"></i></div><div id="bsc" class="bsc hide"><div id="bart" class="art"></div><div class="bar"><i id="bhp"></i></div></div><button class="btn btn-sm sn" id="snb" aria-label="Âm thanh" onclick="toggle('mute')"></button><div id="face" class="art"></div><div id="hud" class="hud"><div class="hr"><b id="name"></b><span id="pts"></span></div><div class="bar"><i id="fill"></i><span id="next"></span></div></div></div>
+<div class="card qc"><button class="btn btn-sm rd" id="rdb" aria-label="Đọc câu hỏi" onclick="readQ()"></button><div id="lvl" class="mute"></div><div id="q" class="q"></div><div id="opts" class="opts"></div><div id="msg"></div>
+<button id="nx" class="btn btn-primary btn-block" style="visibility:hidden" onclick="nextQ()">.</button></div>
+<div class="row tabbar"><button class="btn btn-sm" data-ic="img" onclick="openGal('game')">Sưu tập</button><button class="btn btn-sm" data-ic="clock" onclick="askPin(function(){openHist('game')})">Lịch sử</button><button class="btn btn-sm" data-ic="users" onclick="show('home')">Đổi bé</button><button class="btn btn-sm btn-danger" data-ic="trash" onclick="askPin(del)">Xóa</button></div>
+</div>
+<div id="pop" class="ov hide"><div class="card" style="max-width:320px;width:100%;align-items:center;text-align:center"><div id="pa" class="art" style="width:96px;height:96px;flex:none"></div><b id="ptx" style="margin:6px 0 10px"></b>
+<div class="row" style="width:100%;margin:0"><button class="btn btn-primary" id="py"></button><button class="btn" id="pn">Để sau</button></div></div></div>
+<div id="pin" class="ov hide"><div class="card" style="max-width:320px;width:100%"><b id="pt"></b><div class="mute" id="ps" style="min-height:18px"></div><div id="pd" class="dots"></div><div class="kp" id="kp"></div>
+<button class="btn btn-ghost btn-block" id="pf" onclick="pinForgot()">Quên mã PIN?</button><button class="btn btn-ghost btn-block" onclick="pinClose()">Hủy</button></div></div>
+<script>{{JS}}</script></main></body></html>

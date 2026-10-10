@@ -1,0 +1,43 @@
+// ===== Chăm sóc: mỗi câu đúng là một hành động có hoạt cảnh =====
+var NEEDS={plant:["bug","fert","water"],pet:["bath","feed","drink"],fish:["feed","change","air"],egg:["warm"]};
+var NM={water:"Mình khát nước quá! Giải đúng để tưới nước cho mình nhé!",fert:"Mình cần phân bón để lớn nhanh! Giải đúng để bón phân nhé!",bug:"Ôi, có sâu trên lá! Giải đúng để xịt đuổi sâu nhé!",bath:"Mình lấm bẩn rồi! Giải đúng để tắm cho mình nhé!",feed:"Mình đói bụng rồi! Giải đúng để cho mình ăn nhé!",drink:"Mình khát nước! Giải đúng để cho mình uống nhé!",change:"Nước đục rồi! Giải đúng để thay nước sạch nhé!",air:"Mình thấy ngộp! Giải đúng để bật sục khí nhé!",warm:"Mình lạnh quá! Giải đúng để sưởi ấm cho mình nhé!"};
+var SCN={},BP=[[58,82],[58,64],[60,54],[63,44],[66,38]];
+function R2(a,b){return a+Math.random()*(b-a)}
+function careOn(){return!!P&&P.mode!=="a"&&P.ph!=="map"}
+function ckind(){return isP(P.kind)?"plant":stg(P)===0?"egg":P.kind==="fish"?"fish":"pet"}
+function needCls(){return P&&P.nd&&!P.nd.done&&careOn()?" n-"+P.nd.t:""}
+function acx(s){return[1,.5,.68,.84,1][s]}
+function topY(s){return[78,62,48,34,26][s]}
+var CAN='<path d="M-10 -6h22v14a3 3 0 0 1-3 3h-16a3 3 0 0 1-3-3z" fill="#5aa9e6" stroke="#2c6fa8" stroke-width="1.2"/><path d="M-10 -2L-24 -12L-26 -9L-11 3" fill="#5aa9e6" stroke="#2c6fa8" stroke-width="1.1"/><path d="M-27 -14L-21 -16L-21 -6L-27 -8Z" fill="#8cc8f0" stroke="#2c6fa8"/><path d="M12 -4q10 2 6 14" fill="none" stroke="#2c6fa8" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="1" cy="-6" rx="11" ry="2" fill="#9ed4f7"/>',
+SACK='<path d="M-9 -10Q-12 0 -10 10Q0 14 10 10Q12 0 9 -10Q0 -14 -9 -10Z" fill="#c9a26a" stroke="#8a6a3a" stroke-width="1.2"/><path d="M-9 -10L-6 -16H6L9 -10" fill="#b08850" stroke="#8a6a3a"/><rect x="-5" y="-4" width="10" height="8" rx="2" fill="#7fd36b"/><path d="M-2 0H2M0 -2V2" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>',
+BUCKET='<path d="M-10 -8H10L8 10H-8Z" fill="#9aa6b0" stroke="#6b7782" stroke-width="1.2"/><path d="M-10 -8Q0 -16 10 -8" fill="none" stroke="#6b7782" stroke-width="1.6"/><ellipse cx="0" cy="-8" rx="10" ry="2" fill="#7cc4f5"/>',
+PITCH='<path d="M-8 -8H8L7 8H-7Z" fill="#8ec9f0" stroke="#4a8cc0" stroke-width="1.1"/><path d="M-8 -8L-14 -10L-10 -4" fill="#8ec9f0" stroke="#4a8cc0"/><path d="M8 -4Q15 -2 8 6" fill="none" stroke="#4a8cc0" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="0" cy="-8" rx="8" ry="1.8" fill="#bfe3fa"/>',
+BOTTLE='<rect x="-6" y="-2" width="12" height="16" rx="3" fill="#7fd3e8" stroke="#3a8fa8"/><rect x="-3" y="-8" width="6" height="7" fill="#3a8fa8"/><rect x="3" y="-10" width="8" height="3" rx="1" fill="#2f6f86"/><path d="M6 -4q4 2 1 7" fill="none" stroke="#2f6f86" stroke-width="1.4" stroke-linecap="round"/>',
+SHOWER='<rect x="-2" y="-9" width="4" height="9" fill="#9aa6b0"/><path d="M-11 4Q0 -9 11 4Z" fill="#d5dbe0" stroke="#7b8791"/><path d="M-11 4H11" stroke="#7b8791"/>',
+BOWL='<path d="M-14 -6H14Q12 6 0 6Q-12 6 -14 -6Z" fill="#e58f5c" stroke="#a85f32" stroke-width="1.2"/><ellipse cx="0" cy="-6" rx="14" ry="3.2" fill="#c97a47"/>',
+LAMP='<rect x="-1.5" y="-14" width="3" height="10" fill="#8a7a62"/><path d="M-13 4L-8 -6H8L13 4Z" fill="#ffb703" stroke="#c78a00" stroke-width="1.2"/><ellipse cx="0" cy="4.5" rx="10" ry="2.2" fill="#fff3b0"/>';
+function needIcon(t){var c={water:'<path d="M0 -6Q5 1 0 6Q-5 1 0 -6Z" fill="#4aa8ff"/>',fert:'<path d="M-4 -4Q-5 3 -3 5Q0 6 3 5Q5 3 4 -4Q0 -6 -4 -4Z" fill="#c9a26a" stroke="#8a6a3a" stroke-width=".6"/><path d="M-2 -6L-1 -8H1L2 -6" fill="#8a6a3a"/>',
+ bug:'<ellipse cx="0" cy="1" rx="4" ry="3.4" fill="#e5533d"/><circle cx="-4" cy="1" r="2.2" fill="#3a2d1c"/><path d="M0 -2V4" stroke="#3a2d1c" stroke-width=".8"/>',
+ bath:'<circle cx="-2" cy="1" r="3.2" fill="#fff" stroke="#6ab4e8" stroke-width=".9"/><circle cx="3" cy="-2" r="2.2" fill="#fff" stroke="#6ab4e8" stroke-width=".9"/><circle cx="3" cy="3" r="1.6" fill="#fff" stroke="#6ab4e8" stroke-width=".9"/>',
+ feed:'<path d="M-6 0H6Q5 6 0 6Q-5 6 -6 0Z" fill="#e5a05c"/><circle cx="-2" cy="-1" r="2" fill="#ffd34d"/><circle cx="2" cy="-2" r="2" fill="#ffb703"/>',
+ drink:'<path d="M-4 -6H4L3 6H-3Z" fill="#cfeaff" stroke="#6aa9d8" stroke-width=".8"/><path d="M-3.4 -1H3.4L3 6H-3Z" fill="#4aa8ff"/>',
+ change:'<path d="M-5 -4H5L4 6H-4Z" fill="#9aa6b0" stroke="#6b7782" stroke-width=".8"/><path d="M-5 -4Q0 -9 5 -4" fill="none" stroke="#6b7782"/>',
+ air:'<circle cx="-2" cy="3" r="2.6" fill="#fff" stroke="#6ab4e8" stroke-width=".9"/><circle cx="2.5" cy="-1" r="1.8" fill="#fff" stroke="#6ab4e8" stroke-width=".9"/><circle cx="-1" cy="-4" r="1.2" fill="#fff" stroke="#6ab4e8" stroke-width=".9"/>',
+ warm:'<circle cx="0" cy="0" r="4.5" fill="#ffb703"/><path d="M0 -8V-6M0 6V8M-8 0H-6M6 0H8M-5.6 -5.6L-4.2 -4.2M5.6 5.6L4.2 4.2M-5.6 5.6L-4.2 4.2M5.6 -5.6L4.2 -4.2" stroke="#ffb703" stroke-width="1.2" stroke-linecap="round"/>'}[t];
+ return '<g class="nb" style="transform-origin:80px 18px"><circle cx="71" cy="31" r="1.8" fill="#fff" stroke="#0002"/><circle cx="76" cy="27" r="2.6" fill="#fff" stroke="#0002"/><circle cx="82" cy="17" r="11" fill="#fff" stroke="#0002"/><g transform="translate(82 17) scale(1.1)">'+c+'</g></g>'}
+function mud(s){var sc=acx(s),sp=[[40,66,5],[60,74,4],[46,50,4],[58,44,3.5],[34,76,3]];return sp.map(function(p){return '<ellipse cx="'+(50+(p[0]-50)*sc).toFixed(1)+'" cy="'+(90+(p[1]-90)*sc).toFixed(1)+'" rx="'+(p[2]*sc).toFixed(1)+'" ry="'+(p[2]*.7*sc).toFixed(1)+'" fill="#7a5a34" opacity=".85"/>'}).join("")}
+function sparks(x,y,d){var o=[[-8,-4],[7,-8],[-4,5],[9,3]],i,h="";for(i=0;i<4;i++)h+='<g class="a-spk" style="animation-delay:'+(d+i*.12).toFixed(2)+'s"><path transform="translate('+(x+o[i][0])+' '+(y+o[i][1])+')" d="M0 -3L.9 -.9L3 0L.9 .9L0 3L-.9 .9L-3 0L-.9 -.9Z" fill="#ffd34d"/></g>';return h}
+function hearts(x,y,d){var i,h="";for(i=0;i<3;i++)h+='<g class="a-hrt" style="animation-delay:'+(d+i*.25).toFixed(2)+'s"><path transform="translate('+(x-8+i*8)+' '+y+')" d="M0 3C-5 -1 -4 -5 0 -3C4 -5 5 -1 0 3Z" fill="#ff6b8b"/></g>';return h}
+function bubbles(n,x0,x1,y0,d0){var i,h="",r;for(i=0;i<n;i++){r=R2(1.6,3.8);h+='<circle class="a-rise" style="--x:'+R2(-4,4).toFixed(1)+'px;--t:'+R2(1.4,2.2).toFixed(2)+'s;animation-delay:'+(d0+i*.09).toFixed(2)+'s" cx="'+R2(x0,x1).toFixed(1)+'" cy="'+y0+'" r="'+r.toFixed(1)+'" fill="#fff" fill-opacity=".25" stroke="#fff" stroke-width=".7"/>'}return h}
+function pour(prop,tip,tx,ty,gy,kind){var cx=tx-tip[0],cy=ty-tip[1],hh=gy-ty,i,d,x,h='<g class="a-in" style="transform-origin:'+cx.toFixed(1)+'px '+cy.toFixed(1)+'px"><g transform="translate('+cx.toFixed(1)+' '+cy.toFixed(1)+')">'+prop+'</g></g>';
+ for(i=0;i<12;i++){d=(.95+i*.1).toFixed(2);x=(tx+R2(-3,3)).toFixed(1);
+  if(kind==="water")h+='<g class="a-drp" style="--h:'+hh+'px;animation-delay:'+d+'s"><path transform="translate('+x+' '+ty+')" d="M0 -3Q2.2 0 0 2.6Q-2.2 0 0 -3Z" fill="#4aa8ff"/></g><ellipse class="a-rng" style="transform-origin:'+x+'px '+gy+'px;animation-delay:'+(+d+.55).toFixed(2)+'s" cx="'+x+'" cy="'+gy+'" rx="5" ry="1.6" fill="none" stroke="#7cc4f5" stroke-width=".9"/>';
+  else h+='<g class="a-drp" style="--h:'+hh+'px;animation-delay:'+d+'s"><circle cx="'+x+'" cy="'+ty+'" r="1.4" fill="'+pick(["#7a5a34","#9a7a4a","#5f7a3a"])+'"/></g>'}
+ return h}
+function food(k){var s='',i;
+ if(k==="cat")return '<ellipse cx="0" cy="-2" rx="6" ry="3" fill="#9bb7c9"/><path d="M5 -2L9 -5V1Z" fill="#9bb7c9"/><circle cx="-3" cy="-3" r=".8" fill="#2b2118"/>';
+ if(k==="dog")return '<rect x="-6" y="-3" width="12" height="3" rx="1.5" fill="#f3e9d2" stroke="#c8b78f" stroke-width=".6"/><circle cx="-6.5" cy="-3.2" r="2" fill="#f3e9d2" stroke="#c8b78f" stroke-width=".6"/><circle cx="-6.5" cy=".2" r="2" fill="#f3e9d2" stroke="#c8b78f" stroke-width=".6"/><circle cx="6.5" cy="-3.2" r="2" fill="#f3e9d2" stroke="#c8b78f" stroke-width=".6"/><circle cx="6.5" cy=".2" r="2" fill="#f3e9d2" stroke="#c8b78f" stroke-width=".6"/>';
+ if(k==="dragon")return '<ellipse cx="-1" cy="-3" rx="5.5" ry="4" fill="#b5652f"/><rect x="3" y="-4" width="7" height="2.2" rx="1.1" fill="#f3e9d2"/>';
+ if(k==="dino")return '<ellipse cx="-4" cy="-2" rx="4.5" ry="2" fill="#5fbf5a" transform="rotate(-20 -4 -2)"/><ellipse cx="2" cy="-3" rx="4.5" ry="2" fill="#4aa24f" transform="rotate(15 2 -3)"/><ellipse cx="5" cy="-1" rx="4" ry="1.8" fill="#7fd36b"/>';
+ if(k==="unicorn")return '<path d="M-7 -3L5 -5L5 -1Z" fill="#ff8a3d"/><path d="M5 -5L9 -7M5 -3L10 -3M5 -1L9 1" stroke="#4aa24f" stroke-width="1.4" stroke-linecap="round"/>';
+ [[-5,0],[-2,-1],[2,0],[5,-1],[0,-2.5],[-3,-3],[3,-3]].forEach(function(p){s+='<ellipse cx="'+p[0]+'" cy="'+p[1]+'" rx="2" ry="1.2" fill="#e8c14a"/>'});return s}

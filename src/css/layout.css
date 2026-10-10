@@ -1,0 +1,19 @@
+.hide{display:none!important}
+.art{position:relative}.card.fit,.qc{position:relative}
+.bub{position:absolute;left:10px;top:8px;width:max-content;max-width:56%;background:var(--card-a);color:var(--ink);border-radius:16px;padding:6px 11px;font-size:12.5px;font-weight:700;line-height:1.28;text-align:left;overflow-wrap:anywhere;opacity:0;transform:translateY(-4px);transition:opacity .25s,transform .25s;pointer-events:none;z-index:4;box-shadow:0 2px 8px rgba(0,0,0,.12)}.bub.on{opacity:1;transform:none}
+.btl{position:absolute;top:100%;left:50%;width:0;height:0;margin-left:-7px;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--card-a)}
+.btl.side{left:auto;right:-9px;margin:-7px 0 0 0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:0;border-left:9px solid var(--card-a)}
+.gl{align-self:center;font-weight:800;color:var(--mute);padding:0 2px}.chip{font-size:15px;padding:0;min-width:0}.chip.tb{flex:2.2}
+.mini{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;width:80%;margin:2px 0}.mini i{height:7px;border-radius:3px;background:var(--line)}.mini i.m1{background:#f4c95d}.mini i.m2{background:#b6d86b}.mini i.m3{background:var(--pri)}
+.tile b{font-size:17px}.tile small{font-size:11px;color:var(--mute);font-weight:700}
+.chip.adv{flex:1.3}.chip.adv svg{vertical-align:-5px}
+.bsc{position:absolute;right:8px;top:18%;width:28%;display:flex;flex-direction:column;align-items:center}.bsc .art{width:100%;height:auto;aspect-ratio:1;max-height:110px}.bsc .bar{width:90%;height:8px;margin:2px 0}.bsc .bar i{background:#ff7aa2}
+.bossmode #face{margin-right:30%}@media (max-height:620px){.bsc{top:12%;width:24%}.bsc .art{max-height:70px}}.bs-ok{animation:pulse .5s ease-out}.bs-no{animation:wob .6s ease-out}
+.amap{flex:1;min-height:0;display:flex;justify-content:center}.amap>svg{width:100%;height:100%;max-height:100%}.nd{cursor:pointer}
+.bw{animation:bwig .5s ease-in-out infinite alternate}@keyframes bwig{from{transform:rotate(-3deg) scaleY(1)}to{transform:rotate(3deg) scaleY(1.07)}}
+.bdie{animation:bdie .6s ease-in forwards}@keyframes bdie{to{transform:scale(0) rotate(240deg);opacity:0}}
+.bhit{animation:bhit .4s}@keyframes bhit{0%,100%{opacity:1}50%{opacity:.25}}
+.btaunt{animation:wob .5s}.brun{animation:brun .7s ease-in forwards}@keyframes brun{to{transform:translateX(160px);opacity:0}}
+.sp{animation:spd .5s linear forwards;opacity:0}@keyframes spd{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.bw{animation:none}}
+

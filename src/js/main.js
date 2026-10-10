@@ -1,0 +1,3 @@
+hydrate();(function(){var k=$("kp");["1","2","3","4","5","6","7","8","9","","0","back"].forEach(function(x){var b=document.createElement("button");b.className="btn";if(x==="")b.style.visibility="hidden";else if(x==="back")b.innerHTML=ic("left",22);else b.textContent=x;b.onclick=function(){pinKey(x)};k.appendChild(b)})})();
+show("home");$("face").onclick=poke;lifeStart();skyFit();window.addEventListener("resize",fitAll);setInterval(function(){if(P)skyFit()},300000);
+try{if("serviceWorker" in navigator&&location.protocol.indexOf("http")===0)fetch("sw.js",{method:"HEAD"}).then(function(r){if(r.ok)navigator.serviceWorker.register("sw.js")}).catch(function(){})}catch(e){}

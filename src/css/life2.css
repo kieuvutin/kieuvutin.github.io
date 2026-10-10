@@ -1,0 +1,17 @@
+.lwalk{animation:lwk 6.6s ease-in-out}@keyframes lwk{0%,100%{transform:translateX(0)}25%{transform:translateX(-24%)}50%{transform:translateX(-24%)}75%{transform:translateX(22%)}90%{transform:translateX(22%)}}
+.lwalk>svg:first-child{animation:lwb .55s ease-in-out infinite alternate}@keyframes lwb{from{transform:rotate(-3deg) translateY(0)}to{transform:rotate(3deg) translateY(-3%)}}
+.lhop{animation:lhp 1.8s ease-out}@keyframes lhp{0%,36%,68%,100%{transform:translateY(0) scale(1,1)}12%{transform:translateY(-13%) scale(.97,1.04)}24%{transform:translateY(0) scale(1.04,.95)}46%{transform:translateY(-13%) scale(.97,1.04)}58%{transform:translateY(0) scale(1.04,.95)}80%{transform:translateY(-9%)}90%{transform:translateY(0) scale(1.03,.96)}}
+.llook{animation:llk 2.8s ease-in-out}@keyframes llk{0%,100%{transform:rotate(0)}30%{transform:rotate(-3deg)}65%{transform:rotate(3deg)}}
+.art.llook .eye{animation:lkx 2.8s ease-in-out both}@keyframes lkx{0%,100%{transform:translateX(0)}25%{transform:translateX(-2.6px)}60%{transform:translateX(2.6px)}80%{transform:translateX(-1px)}}
+.lstr{animation:lsr 2.6s ease-in-out}@keyframes lsr{0%,100%{transform:scale(1,1)}35%,62%{transform:scale(1.1,.91)}}
+.lbask{animation:lbk 3.5s ease-in-out}@keyframes lbk{0%,100%{transform:rotate(0) scale(1)}40%,70%{transform:rotate(2.5deg) scale(1.03)}}
+.art.lbask .eye{animation:none;transform:scaleY(.3)}
+.lup{animation:lupa 2.7s ease-in-out}@keyframes lupa{0%,100%{transform:rotate(0)}30%,75%{transform:rotate(-5deg) scale(1.02)}}
+.art.lup .eye{animation:lpy 2.7s ease-in-out both}@keyframes lpy{0%,100%{transform:translateY(0)}30%,75%{transform:translateY(-2.2px)}}
+.ljump{animation:ljp 1.7s ease-out}@keyframes ljp{0%,45%,100%{transform:translateY(0) rotate(0)}65%{transform:translateY(-32%) rotate(-12deg)}85%{transform:translateY(0) rotate(4deg)}}
+.lgust{animation:lgu 2.5s ease-in-out}@keyframes lgu{0%,100%{transform:rotate(0)}15%,55%{transform:rotate(5deg)}35%,75%{transform:rotate(-4deg)}}
+.art.lean{transform:rotate(var(--lean,0deg));transition:transform 1.5s ease}
+.l-lady{animation:lld 4.6s ease-in-out both}@keyframes lld{0%{opacity:0;transform:translate(0,0)}8%{opacity:1}28%{transform:translate(3px,calc(var(--dy)*.3))}48%{transform:translate(-2px,calc(var(--dy)*.6))}70%,80%{transform:translate(0,var(--dy))}100%{opacity:0;transform:translate(46px,calc(var(--dy) - 26px))}}
+.l-worm{animation:lwm 3.2s ease-in-out both}@keyframes lwm{0%{transform:scaleY(0)}18%{transform:scaleY(1) rotate(0)}40%{transform:scaleY(1) rotate(9deg)}60%{transform:scaleY(1) rotate(-9deg)}78%{transform:scaleY(1) rotate(0)}100%{transform:scaleY(0)}}
+.l-swimx{animation:lsx 3.6s ease-in-out both}@keyframes lsx{0%{opacity:0;transform:translateX(-30px)}15%{opacity:.9}85%{opacity:.9}100%{opacity:0;transform:translateX(136px)}}
+@media (prefers-reduced-motion:reduce){.lwalk>svg:first-child{animation:none}}
